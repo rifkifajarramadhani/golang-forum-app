@@ -1,4 +1,4 @@
-export MYSQL_URL='mysql://root:password@localhost:3306/forum_app'
+export MYSQL_URL='mysql://root:password@tcp(localhost:3306)/forum_app'
 
 migrate-create:
 	@ migrate create -ext sql -dir scripts/migrations -seq $(name)
