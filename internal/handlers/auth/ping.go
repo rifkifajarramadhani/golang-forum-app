@@ -1,4 +1,4 @@
-package memberships
+package auth
 
 import (
 	"net/http"

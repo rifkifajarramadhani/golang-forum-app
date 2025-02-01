@@ -2,14 +2,14 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/rifkifajarramadhani/internal/handlers/memberships"
+	"github.com/rifkifajarramadhani/internal/handlers/auth"
 )
 
 func main() {
 	r := gin.Default()
 
-	membershipHandler := memberships.NewHandler(r)
-	membershipHandler.Register()
+	authHandler := auth.NewHandler(r)
+	authHandler.Register()
 
 	r.Run()
 }
