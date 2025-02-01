@@ -7,6 +7,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/rifkifajarramadhani/internal/configs"
 	"github.com/rifkifajarramadhani/internal/handlers/auth"
+	authRepository "github.com/rifkifajarramadhani/internal/repositories/auth"
+	"github.com/rifkifajarramadhani/pkg/db"
 )
 
 func main() {
@@ -28,6 +30,12 @@ func main() {
 	}
 	cfg = configs.GetConfig()
 	fmt.Printf("config: %+v\n", cfg)
+
+	db, err := db.Connect(cfg.Database.Datasource)
+	if err != nil {
+		log.Fatalf("failed to connect to db: %v", err)
+	}
+	_ = authRepository.NewRepository(db)
 
 	authHandler := auth.NewHandler(r)
 	authHandler.Register()
