@@ -38,7 +38,7 @@ func main() {
 	}
 	authRepo := authRepository.NewRepository(db)
 
-	authServ := authService.NewService(authRepo)
+	authServ := authService.NewService(cfg, authRepo)
 
 	authHandler := auth.NewHandler(r, authServ)
 	authHandler.RegisterRoute()

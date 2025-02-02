@@ -3,6 +3,7 @@ package auth
 import (
 	"context"
 
+	"github.com/rifkifajarramadhani/internal/configs"
 	"github.com/rifkifajarramadhani/internal/models/auth"
 )
 
@@ -12,11 +13,13 @@ type authRepositoryInterface interface {
 }
 
 type service struct {
+	config         *configs.Config
 	authRepository authRepositoryInterface
 }
 
-func NewService(authRepository authRepositoryInterface) *service {
+func NewService(config *configs.Config, authRepository authRepositoryInterface) *service {
 	return &service{
+		config:         config,
 		authRepository: authRepository,
 	}
 }

@@ -14,6 +14,13 @@ type (
 	}
 )
 
+// Response models
+type (
+	LoginResponse struct {
+		AccessToken string `json:"accessToken"`
+	}
+)
+
 // DB models
 type (
 	UserModel struct {

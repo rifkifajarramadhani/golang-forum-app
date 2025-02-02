@@ -17,8 +17,8 @@ func (r *repository) CreateUser(ctx context.Context, user authModel.UserModel) e
 }
 
 func (r *repository) GetUser(ctx context.Context, email string, password string) (*authModel.UserModel, error) {
-	query := `SELECT email, password FROM users WHERE email = ? AND password = ?`
-	row := r.db.QueryRowContext(ctx, query, email, password)
+	query := `SELECT email, password FROM users WHERE email = ?`
+	row := r.db.QueryRowContext(ctx, query, email)
 
 	var user authModel.UserModel
 	err := row.Scan(&user.Email, &user.Password)

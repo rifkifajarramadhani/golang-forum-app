@@ -1,5 +1,6 @@
 service:
   port: ":8080"
+  jwt_secret: "mysupersecretkey"
 
 database:
   datasource: "root:password@tcp(localhost:3306)/forum_app"

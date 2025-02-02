@@ -9,6 +9,7 @@ import (
 
 type authServiceInterface interface {
 	Register(ctx context.Context, req auth.RegisterRequest) error
+	Login(ctx context.Context, req auth.LoginRequest) (string, error)
 }
 
 type Handler struct {
@@ -27,4 +28,5 @@ func NewHandler(api *gin.Engine, authService authServiceInterface) *Handler {
 func (h *Handler) RegisterRoute() {
 	route := h.Group("/auth")
 	route.POST("/register", h.Register)
+	route.POST("/login", h.Login)
 }
