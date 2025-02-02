@@ -11,7 +11,7 @@ A simple forum backend application built with Golang.
 
 ## Tech Stack
 - Language: Go
-- Framework: Gorilla Mux (or Fiber/Gin, if applicable)
+- Framework: Gin
 - Database: PostgreSQL/MySQL
 - Authentication: JWT
 - Migrations: Golang Migrate
@@ -20,13 +20,13 @@ A simple forum backend application built with Golang.
 
 ### Prerequisites
 - Go 1.20+ installed
-- PostgreSQL/MySQL database setup
+- MySQL database setup
 - Environment variables configured
 
 ### Clone the Repository
 ```sh
-git clone https://github.com/yourusername/forum-backend.git
-cd forum-backend
+git clone https://github.com/rifkifajarramadhani/golang-forum-app.git
+cd golang-forum-app
 ```
 
 ### Install Dependencies
@@ -71,12 +71,6 @@ go run main.go
 ### Comments
 - `POST /posts/{id}/comments` - Add a comment
 - `GET /posts/{id}/comments` - Get all comments for a post
-
-## Testing
-Run unit tests with:
-```sh
-go test ./...
-```
 
 ## License
 This project is licensed under the MIT License.
