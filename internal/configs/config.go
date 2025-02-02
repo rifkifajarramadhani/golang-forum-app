@@ -54,7 +54,7 @@ func getDefaultConfigType() string {
 	return "yaml"
 }
 
-func WithCOnfigFolders(configFolders []string) Option {
+func WithConfigFolders(configFolders []string) Option {
 	return func(o *option) {
 		o.configFolders = configFolders
 	}

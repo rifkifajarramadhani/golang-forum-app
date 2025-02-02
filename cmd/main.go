@@ -20,7 +20,7 @@ func main() {
 	)
 
 	err := configs.Init(
-		configs.WithCOnfigFolders(
+		configs.WithConfigFolders(
 			[]string{"./internal/configs"},
 		),
 		configs.WithConfigFile("config"),
