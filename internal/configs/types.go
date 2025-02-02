@@ -2,7 +2,7 @@ package configs
 
 type (
 	Config struct {
-		Service Service `mapsstructure:"service"`
+		Service  Service  `mapsstructure:"service"`
 		Database Database `mapsstructure:"database"`
 	}
 

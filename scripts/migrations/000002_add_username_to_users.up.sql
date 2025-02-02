@@ -1,0 +1,5 @@
+ALTER TABLE users
+ADD COLUMN username VARCHAR(255) NOT NULL AFTER id;
+
+ALTER TABLE users
+ADD UNIQUE INDEX username_UNIQUE (username);

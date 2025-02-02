@@ -7,7 +7,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/rifkifajarramadhani/internal/configs"
 	"github.com/rifkifajarramadhani/internal/handlers/auth"
-	authRepository "github.com/rifkifajarramadhani/internal/repositories/auth"
+	authRepo "github.com/rifkifajarramadhani/internal/repositories/auth"
+	authServ "github.com/rifkifajarramadhani/internal/services/auth"
 	"github.com/rifkifajarramadhani/pkg/db"
 )
 
@@ -35,10 +36,12 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to connect to db: %v", err)
 	}
-	_ = authRepository.NewRepository(db)
+	authRepo := authRepo.NewRepository(db)
 
-	authHandler := auth.NewHandler(r)
-	authHandler.Register()
+	authServ := authServ.NewService(authRepo)
+
+	authHandler := auth.NewHandler(r, authServ)
+	authHandler.RegisterRoute()
 
 	r.Run(cfg.Service.Port)
 }

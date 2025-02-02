@@ -8,8 +8,8 @@ var config *Config
 
 type option struct {
 	configFolders []string
-	configFile string
-	configType string
+	configFile    string
+	configType    string
 }
 
 type Option func(*option)
@@ -17,8 +17,8 @@ type Option func(*option)
 func Init(opts ...Option) error {
 	opt := &option{
 		configFolders: getDefaultConfigFolders(),
-		configFile: getDefaultConfigFile(),
-		configType: getDefaultConfigType(),
+		configFile:    getDefaultConfigFile(),
+		configType:    getDefaultConfigType(),
 	}
 
 	for _, o := range opts {
