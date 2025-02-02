@@ -47,7 +47,7 @@ JWT_SECRET=your_secret_key
 
 ### Run Database Migrations
 ```sh
-migrate -database "postgres://youruser:yourpassword@localhost:5432/forum_db?sslmode=disable" -path ./migrations up
+make migrate-up
 ```
 
 ### Run the Application
