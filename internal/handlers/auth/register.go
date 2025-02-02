@@ -18,7 +18,7 @@ func (h *Handler) Register(c *gin.Context) {
 		return
 	}
 
-	err := h.authServ.Register(ctx, request)
+	err := h.authService.Register(ctx, request)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"error": err.Error(),

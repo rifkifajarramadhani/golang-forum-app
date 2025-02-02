@@ -9,7 +9,7 @@ import (
 )
 
 func (s *service) Register(ctx context.Context, req authModel.RegisterRequest) error {
-	user, err := s.authRepo.GetUser(ctx, req.Email, req.Password)
+	user, err := s.authRepository.GetUser(ctx, req.Email, req.Password)
 	if err != nil {
 		return err
 	}
@@ -29,5 +29,5 @@ func (s *service) Register(ctx context.Context, req authModel.RegisterRequest) e
 		Password: string(password),
 	}
 
-	return s.authRepo.CreateUser(ctx, model)
+	return s.authRepository.CreateUser(ctx, model)
 }

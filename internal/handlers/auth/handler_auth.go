@@ -7,20 +7,20 @@ import (
 	"github.com/rifkifajarramadhani/internal/models/auth"
 )
 
-type authService interface {
+type authServiceInterface interface {
 	Register(ctx context.Context, req auth.RegisterRequest) error
 }
 
 type Handler struct {
 	*gin.Engine
 
-	authServ authService
+	authService authServiceInterface
 }
 
-func NewHandler(api *gin.Engine, authServ authService) *Handler {
+func NewHandler(api *gin.Engine, authService authServiceInterface) *Handler {
 	return &Handler{
-		Engine:   api,
-		authServ: authServ,
+		Engine:      api,
+		authService: authService,
 	}
 }
 

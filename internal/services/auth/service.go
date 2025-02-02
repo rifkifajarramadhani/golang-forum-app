@@ -6,17 +6,17 @@ import (
 	"github.com/rifkifajarramadhani/internal/models/auth"
 )
 
-type authRepository interface {
+type authRepositoryInterface interface {
 	CreateUser(ctx context.Context, model auth.UserModel) error
 	GetUser(ctx context.Context, email string, password string) (*auth.UserModel, error)
 }
 
 type service struct {
-	authRepo authRepository
+	authRepository authRepositoryInterface
 }
 
-func NewService(authRepo authRepository) *service {
+func NewService(authRepository authRepositoryInterface) *service {
 	return &service{
-		authRepo: authRepo,
+		authRepository: authRepository,
 	}
 }
