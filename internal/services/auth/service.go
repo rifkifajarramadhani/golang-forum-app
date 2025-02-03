@@ -7,18 +7,18 @@ import (
 	"github.com/rifkifajarramadhani/internal/models/auth"
 )
 
-type authRepositoryInterface interface {
+type AuthRepositoryInterface interface {
 	CreateUser(ctx context.Context, model auth.UserModel) error
 	GetUser(ctx context.Context, email string, password string) (*auth.UserModel, error)
 }
 
-type service struct {
+type Service struct {
 	config         *configs.Config
-	authRepository authRepositoryInterface
+	authRepository AuthRepositoryInterface
 }
 
-func NewService(config *configs.Config, authRepository authRepositoryInterface) *service {
-	return &service{
+func NewService(config *configs.Config, authRepository AuthRepositoryInterface) *Service {
+	return &Service{
 		config:         config,
 		authRepository: authRepository,
 	}

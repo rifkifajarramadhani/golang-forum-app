@@ -6,7 +6,7 @@ import (
 	"github.com/rifkifajarramadhani/internal/models/post"
 )
 
-func (s *service) CreatePost(ctx context.Context, req post.CreatePostRequest) error {
+func (s *Service) CreatePost(ctx context.Context, req post.CreatePostRequest) error {
 	model := post.PostModel{
 		UserID:  req.UserID,
 		Title:   req.Title,

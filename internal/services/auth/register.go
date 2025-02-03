@@ -4,11 +4,11 @@ import (
 	"context"
 	"errors"
 
-	authModel "github.com/rifkifajarramadhani/internal/models/auth"
+	"github.com/rifkifajarramadhani/internal/models/auth"
 	"golang.org/x/crypto/bcrypt"
 )
 
-func (s *service) Register(ctx context.Context, req authModel.RegisterRequest) error {
+func (s *Service) Register(ctx context.Context, req auth.RegisterRequest) error {
 	user, err := s.authRepository.GetUser(ctx, req.Email, req.Password)
 	if err != nil {
 		return err
@@ -23,7 +23,7 @@ func (s *service) Register(ctx context.Context, req authModel.RegisterRequest) e
 		return err
 	}
 
-	model := authModel.UserModel{
+	model := auth.UserModel{
 		Username: req.Username,
 		Email:    req.Email,
 		Password: string(password),

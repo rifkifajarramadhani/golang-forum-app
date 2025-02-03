@@ -6,7 +6,7 @@ import (
 	"github.com/rifkifajarramadhani/internal/models/post"
 )
 
-type postRepositoryInterface interface {
+type PostRepositoryInterface interface {
 	CreatePost(ctx context.Context, model post.PostModel) error
 	GetPost(ctx context.Context, id uint64) (*post.PostModel, error)
 	GetPosts(ctx context.Context) ([]post.PostModel, error)
@@ -14,12 +14,12 @@ type postRepositoryInterface interface {
 	UpdatePost(ctx context.Context, id uint64, model post.PostModel) error
 }
 
-type service struct {
-	postRepository postRepositoryInterface
+type Service struct {
+	postRepository PostRepositoryInterface
 }
 
-func NewService(postRepository postRepositoryInterface) *service {
-	return &service{
+func NewService(postRepository PostRepositoryInterface) *Service {
+	return &Service{
 		postRepository: postRepository,
 	}
 }

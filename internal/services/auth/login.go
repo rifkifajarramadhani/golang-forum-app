@@ -10,7 +10,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-func (s *service) Login(ctx context.Context, req auth.LoginRequest) (string, error) {
+func (s *Service) Login(ctx context.Context, req auth.LoginRequest) (string, error) {
 	user, err := s.authRepository.GetUser(ctx, req.Email, req.Password)
 	if err != nil {
 		log.Error().Err(err).Msg("failed to get user")
