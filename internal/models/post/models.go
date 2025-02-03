@@ -3,7 +3,6 @@ package post
 // Request models
 type (
 	CreatePostRequest struct {
-		UserID  uint64 `json:"user_id"`
 		Title   string `json:"title"`
 		Content string `json:"content"`
 	}

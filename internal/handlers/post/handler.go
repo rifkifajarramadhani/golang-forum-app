@@ -9,7 +9,7 @@ import (
 )
 
 type postServiceInterface interface {
-	CreatePost(ctx context.Context, req post.CreatePostRequest) error
+	CreatePost(ctx context.Context, userId uint64, req post.CreatePostRequest) error
 	GetPost(ctx context.Context, id uint64) (*post.PostModel, error)
 	GetPosts(ctx context.Context) ([]post.PostModel, error)
 	GetPostsByUserID(ctx context.Context, userId uint64) ([]post.PostModel, error)
@@ -33,5 +33,6 @@ func (h *Handler) RegisterRoute() {
 	route := h.Group("/posts")
 	route.Use(middleware.AuthMiddleware())
 
+	route.POST("/create", h.CreatePost)
 	route.GET("/", h.GetPosts)
 }

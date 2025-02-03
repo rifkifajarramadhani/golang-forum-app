@@ -2,11 +2,13 @@ package post
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/rifkifajarramadhani/internal/models/post"
 )
 
 func (r *Repository) CreatePost(ctx context.Context, model post.PostModel) error {
+	fmt.Println(model)
 	query := `INSERT INTO posts (title, content, user_id) VALUES (?, ?, ?)`
 	_, err := r.db.ExecContext(ctx, query, model.Title, model.Content, model.UserID)
 	if err != nil {

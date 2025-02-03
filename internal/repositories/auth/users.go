@@ -17,11 +17,11 @@ func (r *Repository) CreateUser(ctx context.Context, user auth.UserModel) error 
 }
 
 func (r *Repository) GetUser(ctx context.Context, email string, password string) (*auth.UserModel, error) {
-	query := `SELECT email, password FROM users WHERE email = ?`
+	query := `SELECT id, username, email, password FROM users WHERE email = ?`
 	row := r.db.QueryRowContext(ctx, query, email)
 
 	var user auth.UserModel
-	err := row.Scan(&user.Email, &user.Password)
+	err := row.Scan(&user.ID, &user.Username, &user.Email, &user.Password)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			return nil, nil

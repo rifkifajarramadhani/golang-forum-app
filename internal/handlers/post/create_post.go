@@ -14,7 +14,8 @@ func (h *Handler) CreatePost(c *gin.Context) {
 		return
 	}
 
-	if err := h.postService.CreatePost(c.Request.Context(), req); err != nil {
+	userId := c.MustGet("userId").(uint64)
+	if err := h.postService.CreatePost(c.Request.Context(), userId, req); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}

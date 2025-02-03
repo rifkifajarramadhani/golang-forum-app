@@ -3,6 +3,7 @@ package auth
 import (
 	"context"
 	"errors"
+	"fmt"
 
 	"github.com/rifkifajarramadhani/internal/models/auth"
 	"github.com/rifkifajarramadhani/pkg/jwt"
@@ -12,6 +13,7 @@ import (
 
 func (s *Service) Login(ctx context.Context, req auth.LoginRequest) (string, error) {
 	user, err := s.authRepository.GetUser(ctx, req.Email, req.Password)
+	fmt.Println(user)
 	if err != nil {
 		log.Error().Err(err).Msg("failed to get user")
 		return "", err
